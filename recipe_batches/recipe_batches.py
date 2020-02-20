@@ -3,7 +3,17 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  for key in recipe:
+    if key in ingredients:
+      if ingredients[key] - recipe[key] >= 0:
+        # Subtract the recipe amount from the ingredients list
+        ingredients[key] = ingredients[key] - recipe[key]
+      else:
+        return 0
+    else:
+      return 0
+  
+  return 1 + recipe_batches(recipe, ingredients)
 
 
 if __name__ == '__main__':
