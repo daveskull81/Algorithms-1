@@ -3,20 +3,30 @@
 import argparse
 
 def find_max_profit(prices):
-  lowest_price = float('inf')
-  lowest_price_index = 0
-  max_price = float('-inf')
+  # lowest_price = float('inf')
+  # lowest_price_index = 0
+  # max_price = float('-inf')
 
-  for i in range(0,len(prices) - 1):
-    if prices[i] < lowest_price:
-      lowest_price = prices[i]
-      lowest_price_index = i
+  # for i in range(0,len(prices) - 1):
+  #   if prices[i] < lowest_price:
+  #     lowest_price = prices[i]
+  #     lowest_price_index = i
 
-  for j in range(lowest_price_index + 1, len(prices)):
-    if prices[j] > max_price:
-      max_price = prices[j]
+  # for j in range(lowest_price_index + 1, len(prices)):
+  #   if prices[j] > max_price:
+  #     max_price = prices[j]
       
-  return max_price - lowest_price
+  # return max_price - lowest_price
+
+    max_profit = float('-inf')
+
+    for i in range(0,len(prices)):
+      for j in range(i + 1, len(prices)):
+        if prices[j] - prices[i] > max_profit:
+          max_profit = prices[j] - prices[i]
+
+    return max_profit
+
 
 if __name__ == '__main__':
   # This is just some code to accept inputs from the command line
